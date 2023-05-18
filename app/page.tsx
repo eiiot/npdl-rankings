@@ -1,14 +1,28 @@
 import Base from '@/components/Base'
-import { checkEnvironment } from '@/scripts/checkEnvironment';
+import { TeamProps } from '@/components/Team';
 
 export default async function Home() {
-  const teamsRes = await fetch(checkEnvironment().concat('/api/teams'), {
-    next: {
-      revalidate: 60
-    }
-  });
+  const res = await fetch(
+    "https://opensheet.elk.sh/1LVE1VehEpm9hL2flv3NK4fboXm-NlbbC1vidaG6wnCg/team"
+    , {
+      next: {
+        revalidate: 300,
+      }
+    });
 
-  const teams = teamsRes.ok ? await teamsRes.json() : [];
+  const data = await res.json();
+
+  const teams: TeamProps[] = data.map((team: any) => {
+    return {
+      rank: team["Rank"],
+      school: team["School"],
+      partner1: team["Partner 1"],
+      partner2: team["Partner 2"],
+      points: team["Points"],
+      uniqueTeamPoints: team["Unique Team Points"],
+      region: team["Region"],
+    };
+  });
 
   return (
     <main className="flex min-h-screen flex-col items-center pt-8 px-4 max-w-xl mx-auto">

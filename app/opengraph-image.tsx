@@ -27,7 +27,7 @@ export default async function og() {
 
   const res = await fetch(checkEnvironment().concat('/api/teams'));
 
-  const teams = await res.json() as TeamProps[];
+  const teams = res.ok ? (await res.json() as TeamProps[]) : [];
 
   // get top 5 teams
 

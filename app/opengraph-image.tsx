@@ -44,7 +44,7 @@ export default async function og() {
 
   return new ImageResponse(
     (
-      <div tw="flex flex-row p-16">
+      <div tw="flex flex-row p-16 bg-white">
         <div tw="w-1/3 flex flex-col pr-8">
           <h1 tw="text-5xl font-[700] mb-8">NPDL Rankings</h1>
           <span className="">Created by Eliot Hertenstein</span>

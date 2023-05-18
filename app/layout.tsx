@@ -16,6 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script defer data-domain="ndpl.eliot.sh" src="https://analytics.eliothertenstein.com/js/plausible.js"></script>
+      </head>
       <body className={clsx(inter.className, "dark:bg-black dark:text-white")}>{children}</body>
     </html>
   )

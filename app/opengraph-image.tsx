@@ -1,6 +1,5 @@
 import { TeamProps } from "@/components/Team";
 import { ImageResponse } from "next/server";
-import { checkEnvironment } from "@/scripts/checkEnvironment";
 
 export const alt = "About Acme";
 export const size = {

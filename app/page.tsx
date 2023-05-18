@@ -2,9 +2,13 @@ import Base from '@/components/Base'
 import { checkEnvironment } from '@/scripts/checkEnvironment';
 
 export default async function Home() {
-  const teamsRes = await fetch(checkEnvironment().concat('/api/teams'));
+  const teamsRes = await fetch(checkEnvironment().concat('/api/teams'), {
+    next: {
+      revalidate: 60
+    }
+  });
 
-  const teams = await teamsRes.json();
+  const teams = teamsRes.ok ? await teamsRes.json() : [];
 
   return (
     <main className="flex min-h-screen flex-col items-center pt-8 px-4 max-w-xl mx-auto">

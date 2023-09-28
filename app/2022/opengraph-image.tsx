@@ -12,20 +12,20 @@ export const runtime = "edge";
 export default async function og() {
   const inter500 = fetch(
     new URL(
-      `../node_modules/@fontsource/inter/files/inter-latin-500-normal.woff`,
+      `../../node_modules/@fontsource/inter/files/inter-latin-500-normal.woff`,
       import.meta.url
     )
   ).then((res) => res.arrayBuffer());
 
   const inter700 = fetch(
     new URL(
-      `../node_modules/@fontsource/inter/files/inter-latin-700-normal.woff`,
+      `../../node_modules/@fontsource/inter/files/inter-latin-700-normal.woff`,
       import.meta.url
     )
   ).then((res) => res.arrayBuffer());
 
   const res = await fetch(
-    "https://opensheet.elk.sh/1PPA7iMBO-EHl5SSuW_61iS0baX0tSd5Yr-CRzRfCc3M/team"
+    "https://opensheet.elk.sh/1LVE1VehEpm9hL2flv3NK4fboXm-NlbbC1vidaG6wnCg/team"
   );
 
   const data = await res.json();
@@ -34,10 +34,10 @@ export default async function og() {
     return {
       rank: team["Rank"],
       school: team["School"],
-      partner1: team["Debater 1"],
-      partner2: team["Debater 2"],
+      partner1: team["Partner 1"],
+      partner2: team["Partner 2"],
       points: team["Points"],
-      uniqueTeamPoints: team["Unique Points"],
+      uniqueTeamPoints: team["Unique Team Points"],
       region: team["Region"],
     };
   });
@@ -46,7 +46,7 @@ export default async function og() {
     (
       <div tw="flex flex-row p-16 bg-white">
         <div tw="w-1/3 flex flex-col pr-8">
-          <h1 tw="text-5xl font-[700] mb-8">NPDL Rankings</h1>
+          <h1 tw="text-5xl font-[700] mb-8">2022 NPDL Rankings</h1>
           <span className="">Created by Eliot Hertenstein</span>
           <p>
             Image updated {new Date().toLocaleDateString("en-US", {

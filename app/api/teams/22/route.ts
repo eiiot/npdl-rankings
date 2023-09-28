@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   const res = await fetch(
-    "https://opensheet.elk.sh/1PPA7iMBO-EHl5SSuW_61iS0baX0tSd5Yr-CRzRfCc3M/team"
+    "https://opensheet.elk.sh/1LVE1VehEpm9hL2flv3NK4fboXm-NlbbC1vidaG6wnCg/team"
   );
 
   const data = await res.json();
@@ -12,10 +12,10 @@ export async function GET() {
     return {
       rank: team["Rank"],
       school: team["School"],
-      partner1: team["Debater 1"],
-      partner2: team["Debater 2"],
+      partner1: team["Partner 1"],
+      partner2: team["Partner 2"],
       points: team["Points"],
-      uniqueTeamPoints: team["Unique Points"],
+      uniqueTeamPoints: team["Unique Team Points"],
       region: team["Region"],
     };
   });

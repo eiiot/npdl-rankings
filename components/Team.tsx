@@ -16,14 +16,6 @@ export interface TeamProps {
   setTeams: React.Dispatch<React.SetStateAction<TeamProps[]>>;
 }
 
-const numberToNth: Record<number, string> = {
-  1: '1st',
-  2: '2nd',
-  3: '3rd',
-  4: '4th',
-  5: '5th',
-};
-
 
 export const calcTotalPoints = (arr: number[]) => {
   let sortedArray = arr.sort((a, b) => b > a ? 1 : -1)
@@ -39,8 +31,8 @@ const Team = ({
   partner1,
   partner2,
   points,
-  uniqueTeamPoints,
-  region,
+  // uniqueTeamPoints,
+  // region,
   topFive,
   edited,
   setTeams,
@@ -71,7 +63,7 @@ const Team = ({
           team.originalTopFive = topFive
           team.edited = true
         } else {
-          console.log(newTopFive, team.originalTopFive)
+          // @ts-ignore
           if (newTopFive.every((num, index) => num === team.originalTopFive[index])) {
             team.edited = false
           } else {
@@ -115,14 +107,14 @@ const Team = ({
 
               const team = newTeams[index]
 
-              team.topFive = team.originalTopFive
-              team.points = calcTotalPoints(team.originalTopFive).toString()
+              team.topFive = team.originalTopFive as number[]
+              team.points = calcTotalPoints(team.originalTopFive as number[]).toString()
               team.edited = false
 
               return newTeams
             })
           }}
-        >↫</button> : null}
+        ></button> : null}
       </div>
     </div>
   );

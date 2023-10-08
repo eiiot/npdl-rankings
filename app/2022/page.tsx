@@ -1,4 +1,4 @@
-import Base from '@/components/Base'
+import Base from '@/components/BaseDeprec'
 import { TeamProps } from '@/components/TeamDeprec';
 import Link from 'next/link';
 

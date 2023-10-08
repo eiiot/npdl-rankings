@@ -22,6 +22,7 @@ export default async function Home() {
       points: team["Points"],
       uniqueTeamPoints: team["Unique Points"],
       region: team["Region"],
+      topFive: [+team["1st"], +team["2nd"], +team["3rd"], +team["4th"], +team["5th"]],
     };
   });
 

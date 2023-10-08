@@ -1,5 +1,5 @@
 import Base from '@/components/Base'
-import { TeamProps } from '@/components/Team';
+import { TeamProps } from '@/components/TeamDeprec';
 import Link from 'next/link';
 
 export default async function Home() {

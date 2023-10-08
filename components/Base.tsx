@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Team, { TeamProps } from './Team';
+import Team, { TeamProps, calcTotalPoints } from './Team';
 
 interface BaseProps {
   teams: TeamProps[];
@@ -9,6 +9,7 @@ interface BaseProps {
 
 const Base = ({ teams }: BaseProps) => {
   const [filter, setFilter] = useState('');
+  const [liveTeams, setLiveTeams] = useState(teams);
 
   const filteredTeams = teams.filter(team => {
     const { partner1, partner2, school } = team;
@@ -27,7 +28,13 @@ const Base = ({ teams }: BaseProps) => {
       />
       <div className='flex flex-col w-full space-y-2'>
         {
-          filteredTeams.map((team, i) => <Team key={i} {...team} />)
+          filteredTeams.
+            sort((a, b) => calcTotalPoints(b.topFive) - calcTotalPoints(a.topFive)).
+            map((team, i) => <Team key={i} {...team}
+              points={calcTotalPoints(team.topFive)}
+              rank={i + 1}
+              ogRank={team.rank}
+              setTeams={setLiveTeams} />)
         }
       </div>
     </>

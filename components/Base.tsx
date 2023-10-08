@@ -11,7 +11,7 @@ const Base = ({ teams }: BaseProps) => {
   const [filter, setFilter] = useState('');
   const [liveTeams, setLiveTeams] = useState(teams);
 
-  const filteredTeams = teams.filter(team => {
+  const filteredTeams = liveTeams.filter(team => {
     const { partner1, partner2, school } = team;
     const filterText = filter.toLowerCase();
     return partner1.toLowerCase().includes(filterText) || partner2.toLowerCase().includes(filterText) || school.toLowerCase().includes(filterText);
@@ -32,7 +32,7 @@ const Base = ({ teams }: BaseProps) => {
             sort((a, b) => calcTotalPoints(b.topFive) - calcTotalPoints(a.topFive)).
             map((team, i) => <Team key={i} {...team}
               points={calcTotalPoints(team.topFive)}
-              rank={i + 1}
+              rank={liveTeams.indexOf(team) + 1}
               ogRank={team.rank}
               setTeams={setLiveTeams} />)
         }

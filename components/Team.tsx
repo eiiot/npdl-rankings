@@ -74,6 +74,8 @@ const Team = ({
         newTeams[index].topFive = newTopFive.sort((a, b) => b > a ? 1 : -1)
         newTeams[index].points = calcTotalPoints(newTopFive).toString()
 
+        newTeams.sort((a, b) => calcTotalPoints(b.topFive) - calcTotalPoints(a.topFive))
+
         return newTeams
       })
     }
@@ -114,7 +116,7 @@ const Team = ({
               return newTeams
             })
           }}
-        ></button> : null}
+        >R</button> : null}
       </div>
     </div>
   );
